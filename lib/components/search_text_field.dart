@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-
-import '../constants.dart';
+import 'package:saeed_fyp/constants.dart';
 
 class SearchFieldContainer extends StatelessWidget {
   final Widget child;
   const SearchFieldContainer({
-    Key? key,
-    required this.child,
+    Key key,
+    this.child,
   }) : super(key: key);
 
   @override

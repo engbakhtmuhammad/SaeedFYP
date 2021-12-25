@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../constants.dart';
+import 'package:saeed_fyp/constants.dart';
 
 AppBar header(String titleText) {
   return AppBar(

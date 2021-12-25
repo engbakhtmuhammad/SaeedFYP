@@ -1,4 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 
+import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:flutter/material.dart';
 import 'package:saeed_fyp/Screens/Welcome/welcome_screen.dart';
 import 'package:saeed_fyp/Screens/model/user.dart';
@@ -6,19 +9,25 @@ import 'package:saeed_fyp/Screens/services/helper.dart';
 import 'package:saeed_fyp/Screens/update/components/body.dart';
 import 'package:saeed_fyp/components/header.dart';
 import 'package:saeed_fyp/components/profile_field.dart';
+import 'package:saeed_fyp/constants.dart';
+import 'package:saeed_fyp/main.dart';
 
-import '../../constants.dart';
-
-class UsersProfile extends StatefulWidget {
-  User user;
-  UsersProfile({Key? key, required this.user}) : super(key: key);
+class TutorProfile extends StatefulWidget {
+  //User user;
+  TutorProfile({Key key, 
+  //this.user
+  }) : super(key: key);
   @override
-  createState() => _UsersProfileState(user);
+  createState() => _TutorProfileState(
+    //user
+    );
 }
 
-class _UsersProfileState extends State<UsersProfile> {
-  User user;
-  _UsersProfileState(this.user);
+class _TutorProfileState extends State<TutorProfile> {
+  //User user;
+  _TutorProfileState(
+    //this.user
+    );
   bool _imageLoad = false;
   // void checkImage() {
   //   if (user.profilePictureURL == "")
@@ -62,40 +71,41 @@ class _UsersProfileState extends State<UsersProfile> {
                     child: ListTile(
                       title: Center(
                           child: Text(
-                        user.username,
+                        'user.username',
                         style: TextStyle(fontWeight: FontWeight.w600),
                       )),
                       subtitle: Center(
                         child: Text(
-                            user.bio.toString()),
+                            'user.bio.toString()'),
                       ),
                     ),
                   ),
                   SizedBox(height: size.height * .02),
                   ProfileField(
-                    text: user.mail,
+                    text: 'user.mail',
                     icon: Icons.pin_drop_outlined,
-                    color: Colors.red, press: (){},
+                    color: Colors.red,
                   ),
                   ProfileField(
-                    text: user.mail.toString(),
+                    text: 'user.mail.toString()',
                     icon: Icons.phone_outlined,
-                    color: Colors.green, press: (){},
+                    color: Colors.green,
                   ),
                   ProfileField(
-                    text: user.language.toString(),
+                    text: 'user.language.toString()',
                     icon: Icons.language_outlined,
-                    color: Colors.blue, press: (){},
+                    color: Colors.blue,
                   ),
                   ProfileField(
                     text: 'Edit Information',
                     icon: Icons.edit,
                     color: Colors.orange,
                     press: () {
-                      // Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //         builder: (context) => Update(user: user)));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Update(
+                                  )));
                     },
                   ),
                   ProfileField(
@@ -126,7 +136,7 @@ class _UsersProfileState extends State<UsersProfile> {
             child: CircleAvatar(
               radius: size.height * .08,
               backgroundColor: kPrimaryColor,
-              child: Text(user.username[0].toUpperCase().toString(),style: TextStyle(color: kPrimaryLightColor,fontSize: 45),),
+              child: Text('user.username[0].toUpperCase().toString()',style: TextStyle(color: kPrimaryLightColor,fontSize: 45),),
               // backgroundImage: _imageLoad
               //         ? AssetImage('assets/images/place_holder.png')
               //         : NetworkImage('user.profilePictureURL'),

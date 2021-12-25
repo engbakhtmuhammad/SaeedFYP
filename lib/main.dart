@@ -4,13 +4,14 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:saeed_fyp/Screens/services/helper.dart';
+import 'package:saeed_fyp/Screens/signUp/signUpScreen.dart';
 import 'package:saeed_fyp/constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'Screens/Welcome/welcome_screen.dart';
 import 'Screens/model/DAO/DAO.dart';
 import 'Screens/model/user.dart';
-import 'onBoardingNew/onBoardingScreen.dart';
+import 'Screens/onBoardingNew/onBoardingScreen.dart';
+import 'Screens/services/helper.dart';
 
 void main() => runApp(new MyApp());
 class MyApp extends StatefulWidget {
@@ -19,53 +20,18 @@ class MyApp extends StatefulWidget {
 }
 
 class MyAppState extends State<MyApp> with WidgetsBindingObserver {
-   static late User currentUser;
+   static  User currentUser;
   //static Doctor currentDoctor;
-  late StreamSubscription tokenStream;
+   StreamSubscription tokenStream;
 
   // Set default `_initialized` and `_error` state to false
-  bool _initialized = false;
-  bool _error = false;
-
+ 
   // Define an async function to initialize FlutterFire
   
 
   @override
   Widget build(BuildContext context) {
-    // Show error message if initialization failed
-    if (_error) {
-      return MaterialApp(
-          home: Scaffold(
-        body: Container(
-          color: Colors.white,
-          child: Center(
-              child: Column(
-            children: [
-              const Icon(
-                Icons.error_outline,
-                color: Colors.red,
-                size: 25,
-              ),
-              SizedBox(height: 16),
-              Text(
-                'Failed to initialise firebase!',
-                style: TextStyle(color: Colors.red, fontSize: 25),
-              ),
-            ],
-          )),
-        ),
-      ));
-    }
-
-    // Show a loader until FlutterFire is initialized
-    if (!_initialized) {
-      return Container(
-        color: Colors.white,
-        child: const Center(
-          child: CircularProgressIndicator(),
-        ),
-      );
-    }
+    
     var dao = DAO();
 
     return StreamBuilder(
@@ -78,7 +44,7 @@ class MyAppState extends State<MyApp> with WidgetsBindingObserver {
           } else {
             return MultiProvider(
                 providers: [
-                  Provider<List<User>>.value(
+                  Provider<List<User>>.value(value: [],
                     //value: response.data,
                   )
                 ],
@@ -98,13 +64,13 @@ class MyAppState extends State<MyApp> with WidgetsBindingObserver {
 
   @override
   void initState() {
-    WidgetsBinding.instance!.addObserver(this);
+    WidgetsBinding.instance.addObserver(this);
     super.initState();
   }
 
   @override
   void dispose() {
-    WidgetsBinding.instance!.removeObserver(this);
+    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
   @override
@@ -113,25 +79,6 @@ class MyAppState extends State<MyApp> with WidgetsBindingObserver {
     properties.add(DiagnosticsProperty<User>('currentUser', currentUser));
     properties.add(DiagnosticsProperty<User>('currentUser', currentUser));
   }
-
-  //@override
-  // void didChangeAppLifecycleState(AppLifecycleState state) {
-  //   if (auth.FirebaseAuth.instance.currentUser != null && currentUser != null) {
-  //     if (state == AppLifecycleState.paused) {
-  //       //user offline
-  //       tokenStream.pause();
-  //       currentUser.active = false;
-  //       currentUser.lastOnlineTimestamp = Timestamp.now();
-  //       FireStoreUtils.updateCurrentUser(currentUser);
-  //     } else if (state == AppLifecycleState.resumed) {
-  //       //user online
-  //       tokenStream.resume();
-  //       currentUser.active = true;
-  //       FireStoreUtils.updateCurrentUser(currentUser);
-  //     }
-  //   }
-    
-  // }
   
 }
 

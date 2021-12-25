@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:saeed_fyp/components/text_field_container.dart';
-
-import '../constants.dart';
+import 'package:saeed_fyp/constants.dart';
 
 class RoundedPasswordField extends StatelessWidget {
   final ValueChanged<String> onChanged;
   const RoundedPasswordField({
-    Key ? key,
-    required this.onChanged,
+    Key key,
+    this.onChanged,
   }) : super(key: key);
 
   @override
@@ -16,11 +15,11 @@ class RoundedPasswordField extends StatelessWidget {
     return TextFieldContainer(
       child: TextFormField(
         validator: (input) {
-          if (input!.length < 6) {
+          if (input.length < 6) {
             return "Provide Minimum 6 character";
           }
         },
-        onSaved: (input) => _password = input!,
+        onSaved: (input) => _password = input,
         obscureText: true,
         onChanged: onChanged,
         cursorColor: kPrimaryColor,

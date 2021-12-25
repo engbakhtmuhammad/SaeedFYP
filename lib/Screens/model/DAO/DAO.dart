@@ -1,7 +1,6 @@
 
-
-import '../mysql.dart';
-import '../user.dart';
+import 'package:saeed_fyp/Screens/model/mysql.dart';
+import 'package:saeed_fyp/Screens/model/user.dart';
 
 /// DAO == Data Access Object
 /// Here we got the connection between the app and the database

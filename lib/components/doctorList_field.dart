@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
-
-import '../constants.dart';
+import 'package:saeed_fyp/constants.dart';
 
 class DoctorListField extends StatelessWidget {
   final Function onTap;
   final String name;
   final String bio;
 
-  const DoctorListField({Key ? key, required this.onTap,required this.name, required this.bio})
+  const DoctorListField({Key key, this.onTap,this.name, this.bio})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return GestureDetector(
-      //onTap: onTap,
+      onTap: onTap,
       child: Column(children: [
         SizedBox(
           height: size.height * .01,
@@ -36,6 +35,7 @@ class DoctorListField extends StatelessWidget {
                   ),
                   title: Text(name),
                   subtitle: Text(bio),
+
             )
           ),
         ),

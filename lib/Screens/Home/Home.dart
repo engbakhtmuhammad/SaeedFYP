@@ -4,7 +4,7 @@ import 'package:saeed_fyp/constants.dart';
 import 'Rooms.dart';
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+  const MyHomePage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,42 +12,46 @@ class MyHomePage extends StatelessWidget {
     return Builder(builder: (context) {
       return Scaffold(
           backgroundColor: Color(0xfff5f7fa),
-          body: Column(children: [
+          body: Column(
+            children: [
             Stack(
               children: [
                 Container(
-                  height: size.height * .4,
+                  height: size.height * .37,
                   width: size.width,
                 ),
                 GradientContainer(size),
                 Positioned(
-                    top: size.height * .15,
+                    top: size.height * .12,
                     left: 30,
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const Text(
-                            "My Home",
+                            "The Trending",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 26),
                           ),
                           const Padding(
-                            padding: EdgeInsets.only(top: 10, bottom: 5),
+                            padding: EdgeInsets.only(top: 7, bottom: 5),
                             child: Text(
-                              "Rooms",
+                              "Instructors",
                               style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.w600,
                                   fontSize: 17),
                             ),
                           ),
-                          Row(children: [
-                            CustomCard(size,context),
-                            CustomCard(size,context),
-                            CustomCard(size,context),
-                          ]),
+                          SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(children: [
+                              CustomCard(size,context),
+                              CustomCard(size,context),
+                              CustomCard(size,context),
+                            ]),
+                          ),
                         ]))
               ],
             ),
@@ -70,7 +74,7 @@ class MyHomePage extends StatelessWidget {
               borderRadius: BorderRadius.circular(8),
               image: const DecorationImage(
                 image: AssetImage(
-                  "assets/bg.jpg",
+                  "assets/images/bg.jpg",
                 ),
                 fit: BoxFit.cover,
               )),
@@ -97,14 +101,14 @@ class MyHomePage extends StatelessWidget {
 
   Container GradientContainer(Size size) {
     return Container(
-      height: size.height * .3,
+      height: size.height * .27,
       width: size.width,
       decoration: const BoxDecoration(
           borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(30),
               bottomRight: Radius.circular(30)),
           image: DecorationImage(
-              image: AssetImage('assets/bg.jpg'), fit: BoxFit.cover)),
+              image: AssetImage('assets/images/bg.jpg'), fit: BoxFit.cover)),
       child: Container(
         decoration: BoxDecoration(
             borderRadius: const BorderRadius.only(
@@ -121,7 +125,7 @@ class MyHomePage extends StatelessWidget {
 
 class ScenesDashboard extends StatelessWidget {
   const ScenesDashboard({
-    Key? key,
+    Key key,
   }) : super(key: key);
 
   @override
@@ -131,7 +135,7 @@ class ScenesDashboard extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
        Padding(
-    padding: EdgeInsets.symmetric(vertical: 15),
+    padding: EdgeInsets.only(bottom: 5,top: 10),
     child: Text(
       "Scenes",
       style: TextStyle(
@@ -157,9 +161,9 @@ class CardWidget extends StatelessWidget {
   Icon icon;
   String title;
    CardWidget({
-    Key? key,
-    required this.icon,
-    required this.title
+    Key key,
+     this.icon,
+     this.title
   }) : super(key: key);
 
   @override
@@ -182,8 +186,8 @@ class CardWidget extends StatelessWidget {
 
 class DevicesGridDashboard extends StatelessWidget {
   const DevicesGridDashboard({
-    Key? key,
-    required this.size,
+    Key key,
+     this.size,
   }) : super(key: key);
 
   final Size size;
@@ -196,7 +200,7 @@ class DevicesGridDashboard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Padding(
-            padding: EdgeInsets.only(bottom: 15),
+            padding: EdgeInsets.only(bottom: 5),
             child: Text(
               "Devices",
               style: TextStyle(

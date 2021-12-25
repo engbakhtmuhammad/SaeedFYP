@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
-import '../constants.dart';
-import 'search_text_field.dart';
+import 'package:saeed_fyp/components/search_text_field.dart';
+import 'package:saeed_fyp/constants.dart';
 
 class RoundedSearchField extends StatelessWidget {
   final TextEditingController searchController;
@@ -10,12 +9,12 @@ class RoundedSearchField extends StatelessWidget {
   final Function onPressed;
   final ValueChanged<String> onChanged;
   const RoundedSearchField({
-    Key ? key,
-    required this.searchController,
-    required this.hintText,
+    Key key,
+    this.searchController,
+    this.hintText,
     this.icon = Icons.search,
-    required this.onPressed,
-    required this.onChanged,
+    this.onPressed,
+    this.onChanged,
   }) : super(key: key);
 
   @override
@@ -32,7 +31,7 @@ class RoundedSearchField extends StatelessWidget {
             color: kBackgroundColor,
             size: 25,
             
-          ), onPressed: (){}),
+          ), onPressed: onPressed),
           suffixIcon: IconButton(
             icon: Icon(Icons.keyboard_voice_outlined),
             //onPressed open voice keyboard

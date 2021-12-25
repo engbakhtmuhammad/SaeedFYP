@@ -1,8 +1,5 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
-
-import '../constants.dart';
+import 'package:saeed_fyp/constants.dart';
 
 class ProfileField extends StatelessWidget {
   final String text;
@@ -10,11 +7,11 @@ class ProfileField extends StatelessWidget {
   final IconData icon;
   final Function press;
   const ProfileField({
-    Key? key,
-    required this.text,
-    required this.color,
-    required this.icon,
-    required this.press,
+    Key key,
+    this.text,
+    this.color,
+    this.icon,
+    this.press,
   }) : super(key: key);
 
   @override
@@ -37,7 +34,7 @@ class ProfileField extends StatelessWidget {
               size: 35,
               color: color,
             ),
-            onPressed: (){},
+            onPressed: press,
           ),
           Padding(
               padding: EdgeInsets.symmetric(horizontal: 20), child: Text(text))

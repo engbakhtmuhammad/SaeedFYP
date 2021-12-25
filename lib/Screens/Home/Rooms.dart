@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 class Rooms extends StatelessWidget {
-  const Rooms({Key? key}) : super(key: key);
+  const Rooms({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +51,7 @@ class Rooms extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8),
                   image: const DecorationImage(
                     image: AssetImage(
-                      "assets/bg.jpg",
+                      "assets/images/bg.jpg",
                     ),
                     fit: BoxFit.cover,
                   )),
@@ -83,8 +83,8 @@ class Rooms extends StatelessWidget {
 
 class DevicesGridDashboard extends StatelessWidget {
   const DevicesGridDashboard({
-    Key? key,
-    required this.size,
+    Key key,
+     this.size,
   }) : super(key: key);
 
   final Size size;

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:saeed_fyp/Screens/Welcome/welcome_screen.dart';
+import 'package:saeed_fyp/constants.dart';
 import 'package:saeed_fyp/Screens/services/helper.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
-import '../constants.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   @override
@@ -14,30 +13,37 @@ class OnBoardingScreen extends StatefulWidget {
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
   PageController pageController = PageController();
   final List<String> _titlesList = [
-    'Consult Doctors',
-    'Stay Update',
-    'check your symptom that you feel.',
+    'Study at Home',
+    'Your Favourite Subject',
+    'Experienced Instructors',
   ];
 
   final List<String> _subtitlesList = [
-    'Get valueable suggestions by consulting meeting with doctors.',
-    'get news and update from the world wide heath.',
+    'Stay home and safe learning from your favourite instructor',
+    'Choose your favourite subjects and learn from the best instructor',
     'Get Started'
   ];
 
   final List<dynamic> _imageList = [
-    'assets/images/doctor.png',
-    'assets/images/share.png',
-    'assets/images/symptoms.png',
+    'assets/icons/stay-at-home.png',
+    'assets/icons/book-stack.png',
+    'assets/icons/instructor.png',
   ];
   int _currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kPrimaryColor, //change color
+      //backgroundColor: kBackgroundColor, //change color
       body: Stack(
         children: <Widget>[
+          Container(
+            height: double.infinity,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(colors: [kBackgroundColor,kPrimaryColor])
+            ),
+          ),
           PageView.builder(
             itemBuilder: (context, index) => getPage(
                 _imageList[index],
@@ -94,7 +100,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         SizedBox(height: 40),
         Text(
           title.toUpperCase(),
-          style: const TextStyle(
+          style: TextStyle(
               color: Colors.white, fontSize: 18.0, fontWeight: FontWeight.bold),
           textAlign: TextAlign.center,
         ),
@@ -104,9 +110,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               ? OutlineButton(
                   onPressed: () {
                     setFinishedOnBoarding();
-                    pushReplacement(context, WelcomeScreen());
+                    pushReplacement(context, new WelcomeScreen());
                   },
-                  child: const Text(
+                  child: Text(
                     "Get Started",
                     style: TextStyle(
                         fontSize: 18.0,

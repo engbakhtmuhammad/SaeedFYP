@@ -1,25 +1,70 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:saeed_fyp/Screens/Admin/components/background.dart';
 import 'package:saeed_fyp/Screens/Login/loginScreen.dart';
+import 'package:saeed_fyp/Screens/model/doctor.dart';
+import 'package:saeed_fyp/Screens/model/user.dart';
+import 'package:saeed_fyp/Screens/signUp/doctorSignUp.dart';
+import 'package:saeed_fyp/components/doctorList_field.dart';
 import 'package:saeed_fyp/components/rounded_search_field.dart';
-
-import '../../../constants.dart';
-import 'background.dart';
+import 'package:saeed_fyp/constants.dart';
+import 'package:saeed_fyp/Screens/model/mysql.dart';
+import 'package:saeed_fyp/Screens/signUp/signUpScreen.dart';
 
 class ShowUserPage extends StatefulWidget {
-  ShowUserPage({Key ? key, }) : super(key: key);
+  ShowUserPage({Key key, }) : super(key: key);
   @override
   createState() => _ShowUserPageState();
 }
 
 class _ShowUserPageState extends State<ShowUserPage> {
   _ShowUserPageState();
+    Mysql db = new Mysql();
+   List<String> listName = [];
+  List<String> listID = [];
+  List<String> listBio = [];
+    Future<List<String>> getUserSearch() async {
+    List<User> result = [];
+    db.getConnection().then((conn) {
+      // String sql = 'select * from symptomchecker.querytable where answer=?',[null];
+      conn.query('select * from symptomchecker.users where usertype=?',
+          ['user']).then((results) {
+        for (var row in results) {
+          // print(row.fields);
+          row.fields.forEach((key, value) {
+            if (key == 'username') {
+              listName.add(value);
+            }
+            if (key == 'id') {
+              listID.add(value.toString());
+            }
+            if (key == 'bio') {
+              listBio.add(value.toString());
+            }
+          });
+        }
+      }, onError: (error) {
+        print('$error');
+      }).whenComplete(() {
+        conn.close();
+      });
+    });
+    print(listBio.first.toString());
+    return listName;
+  }
+  @override
+  void initState() {
+    getUserSearch();
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    var searchController;
     return Scaffold(
       body: Background(
         child: SingleChildScrollView(
@@ -51,7 +96,7 @@ class _ShowUserPageState extends State<ShowUserPage> {
                   )),
               RoundedSearchField(
                 hintText: 'Search here',
-                onChanged: (value) {}, onPressed: (){}, searchController: searchController,
+                onChanged: (value) {},
               ),
               Container(
                 width: size.width,
@@ -65,7 +110,15 @@ class _ShowUserPageState extends State<ShowUserPage> {
                   bottom: 0,
                   child: Stack(
                     children: <Widget>[
-                     
+                     listName!=null?
+                      ListView.builder(
+                        itemCount: listName.length,
+                        itemBuilder:   (context,index){
+                        return DoctorListField(
+                          name: listName[index],
+                          bio: listBio[index],
+                        );
+                      }):Center(child: Text('No doctors found'),)
                       // StreamBuilder(
                       //     stream: FirebaseFirestore.instance
                       //         .collection('users').where('userType', isEqualTo: 'user')

@@ -2,8 +2,7 @@
 /// Here we got what we want our business to do (Functions, widgets...)
 
 import 'package:flutter/material.dart';
-
-import '../user.dart';
+import 'package:saeed_fyp/Screens/model/user.dart';
 bool isNullOrEmpty(String str) {
   if (str.isEmpty || str == null || str.length == 0) {
     return true;
@@ -33,7 +32,7 @@ void openDialog(
 
 Widget textfield(
     String labeltext, TextEditingController controller, bool obscureText,
-    {required bool validate, bool outlineBorder = false}) {
+    {bool validate, bool outlineBorder = false}) {
   InputDecoration inputDecoration;
   if (validate != null && outlineBorder == false) {
     inputDecoration = InputDecoration(
@@ -73,11 +72,11 @@ Widget passwordTextBox(TextEditingController controller, bool hidePassword, Func
           suffixIcon: IconButton(
               icon:
                   Icon(hidePassword ? Icons.visibility_off : Icons.visibility),
-              onPressed: (){})));
+              onPressed: onPressed)));
 }
 
 Widget longButton(Function onPressed, String textButton,
-    {required List<User> users}) {
+    {List<User> users}) {
   return Container(
       height: 50,
       child: RaisedButton(
@@ -86,10 +85,10 @@ Widget longButton(Function onPressed, String textButton,
             textButton,
             style: TextStyle(fontSize: 18),
           ),
-          onPressed: (){}));
+          onPressed: onPressed));
 }
 
-Widget flatButton(String text, {double fontSize = 15, required Function onPressed}) {
+Widget flatButton(String text, {double fontSize = 15, Function onPressed}) {
   return InkWell(
       child: FlatButton(
           textColor: Colors.orange,
@@ -97,5 +96,5 @@ Widget flatButton(String text, {double fontSize = 15, required Function onPresse
             text,
             style: TextStyle(fontSize: fontSize),
           ),
-          onPressed: (){}));
+          onPressed: onPressed));
 }

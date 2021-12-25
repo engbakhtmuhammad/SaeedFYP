@@ -1,33 +1,33 @@
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
-import '../constants.dart';
-import 'text_field_container.dart';
+import 'package:saeed_fyp/components/text_field_container.dart';
+import 'package:saeed_fyp/constants.dart';
 
 class RoundedInputField extends StatelessWidget {
   final String hintText;
   final IconData icon;
   final ValueChanged<String> onChanged;
   const RoundedInputField({
-    Key? key,
-    required this.hintText,
+    Key key,
+    this.hintText,
     this.icon = Icons.person,
-    required this.onChanged,
+    this.onChanged,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     String _email, _password;
+    final auth = FirebaseAuth.instance;
 
     final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
     return TextFieldContainer(
       child: TextFormField(
         validator: (input) {
-          if (input!.isEmpty) {
+          if (input.isEmpty) {
             return "Enter email";
           }
         },
-        onSaved: (input) => _email = input!,
+        onSaved: (input) => _email = input,
         onChanged: onChanged,
         cursorColor: kPrimaryColor,
         decoration: InputDecoration(

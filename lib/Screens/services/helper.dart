@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:progress_dialog/progress_dialog.dart';
-
-import '../../constants.dart';
+import 'package:saeed_fyp/constants.dart';
 
 String validateName(String value) {
   String pattern = r'(^[a-zA-Z ]*$)';
@@ -12,7 +12,7 @@ String validateName(String value) {
   } else if (!regExp.hasMatch(value)) {
     return "Name must be a-z and A-Z";
   }
-  return '';
+  return null;
 }
 
 String validateMobile(String value) {
@@ -23,25 +23,24 @@ String validateMobile(String value) {
   } else if (!regExp.hasMatch(value)) {
     return "Mobile phone number must contain only digits";
   }
-  return '';
+  return null;
 }
 
 String validatePassword(String value) {
-  if (value.length < 6) {
+  if (value.length < 6)
     return 'Password must be more than 5 characters';
-  } else {
-    return '';
-  }
+  else
+    return null;
 }
 
 String validateEmail(String value) {
   Pattern pattern =
       r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-  RegExp regex =  RegExp(pattern.toString());
+  RegExp regex = new RegExp(pattern);
   if (!regex.hasMatch(value))
     return 'Enter Valid Email';
   else
-    return '';
+    return null;
 }
 
 String validateConfirmPassword(String password, String confirmPassword) {
@@ -51,12 +50,12 @@ String validateConfirmPassword(String password, String confirmPassword) {
   } else if (confirmPassword.length == 0) {
     return 'Confirm password is required';
   } else {
-    return '';
+    return null;
   }
 }
 
 //helper method to show progress
-var progressDialog;
+ProgressDialog progressDialog;
 
 showProgress(BuildContext context, String message, bool isDismissible) async {
   progressDialog = new ProgressDialog(context,

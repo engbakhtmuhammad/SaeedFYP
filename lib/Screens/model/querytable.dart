@@ -1,8 +1,8 @@
 import 'package:password/password.dart';
 
 class QueryTable {
-  late int queryid,userid,doctorid;
-  late String description, answer, timestamp;
+  int queryid,userid,doctorid;
+  String description, answer, timestamp;
 
   QueryTable(
       this.userid, this.doctorid, this.description, this.answer,this.timestamp) {
@@ -14,6 +14,9 @@ class QueryTable {
 
 
   QueryTable.def() {
+    queryid = null;
+    userid = null;
+    doctorid = null;
     description = '';
     answer = '';
     timestamp = '';

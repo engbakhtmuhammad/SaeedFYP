@@ -1,10 +1,11 @@
-# saeed_fyp
+# Attention please read this file
 
-A new Flutter project.
+This is out fyp project so it needs your contributions.
+Naqeeb and Habib you must familiar with Github
 
-## Getting Started
+## Getting Github
 
-This project is a starting point for a Flutter application.
+To use github as central center of our code you really need to know how to use github as team member .
 
 A few resources to get you started if this is your first Flutter project:
 

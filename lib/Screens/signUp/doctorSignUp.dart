@@ -1,21 +1,21 @@
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:saeed_fyp/Screens/model/user.dart';
 import 'package:saeed_fyp/Screens/services/helper.dart';
 import 'package:saeed_fyp/Screens/signUp/background.dart';
 import 'package:saeed_fyp/components/rounded_button.dart';
 import 'package:saeed_fyp/components/text_field_container.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../constants.dart';
 
 
-var _image;
+File _image;
 
 class DoctorSignUpScreen extends StatefulWidget {
  User user;
-  DoctorSignUpScreen({required this.user});
+  DoctorSignUpScreen({this.user});
   @override
   State createState() => _DoctorSignUpState();
 }
@@ -25,16 +25,16 @@ class _DoctorSignUpState extends State<DoctorSignUpScreen> {
   TextEditingController _passwordController = new TextEditingController();
   GlobalKey<FormState> _key = new GlobalKey();
   AutovalidateMode _validate = AutovalidateMode.disabled;
-  late String firstName, lastName, email, mobile, password, confirmPassword, userType = "user";
+  String firstName, lastName, email, mobile, password, confirmPassword, userType = "user";
 
-  late TextEditingController _controller1;
-  late TextEditingController _controller2;
-  late TextEditingController _controller3;
-  late TextEditingController _controller4;
-  late TextEditingController _controller5;
-  late TextEditingController _controller6=TextEditingController(text:'doctor');
-  late TextEditingController _controller7;
-  late TextEditingController _controller8;
+  TextEditingController _controller1;
+  TextEditingController _controller2;
+  TextEditingController _controller3;
+  TextEditingController _controller4;
+  TextEditingController _controller5;
+  TextEditingController _controller6=TextEditingController(text:'doctor');
+  TextEditingController _controller7;
+  TextEditingController _controller8;
   bool validate1 = true;
   bool validate2 = true;
   bool validate3 = true;
@@ -168,7 +168,7 @@ void initState() {
           isDefaultAction: false,
           onPressed: () async {
             Navigator.pop(context);
-            PickedFile? image =
+            PickedFile image =
                 await _imagePicker.getImage(source: ImageSource.gallery);
             if (image != null)
               setState(() {
@@ -181,7 +181,7 @@ void initState() {
           isDestructiveAction: false,
           onPressed: () async {
             Navigator.pop(context);
-            PickedFile? image =
+            PickedFile image =
                 await _imagePicker.getImage(source: ImageSource.camera);
             if (image != null)
               setState(() {
@@ -209,7 +209,7 @@ void initState() {
           SizedBox(height: size.height * .1),
           TextFieldContainer(
               child: TextFormField(
-                  //validator: validateName(_controller1),
+                  validator: validateName,
                   controller: _controller1,
                   // onSaved: (String val) {
                   //   firstName = val;
@@ -220,7 +220,7 @@ void initState() {
                       hintText: 'Username', border: InputBorder.none))),
           TextFieldContainer(
             child: TextFormField(
-                //validator: validateName,
+                validator: validateName,
                 controller: _controller2,
                 // onSaved: (String val) {
                 //   lastName = val;
@@ -232,7 +232,7 @@ void initState() {
           ),
           TextFieldContainer(
             child: TextFormField(
-                //validator: validateName,
+                validator: validateName,
                 controller: _controller3,
                 // onSaved: (String val) {
                 //   lastName = val;
@@ -259,7 +259,7 @@ void initState() {
                 keyboardType: TextInputType.emailAddress,
                 textInputAction: TextInputAction.next,
                 onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
-                //validator: validateEmail,
+                validator: validateEmail,
                 controller: _controller4,
                 // onSaved: (String val) {
                 //   email = val;
@@ -272,7 +272,7 @@ void initState() {
                 keyboardType: TextInputType.text,
                 textInputAction: TextInputAction.next,
                 onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
-                //validator: validateName,
+                validator: validateName,
                 controller: _controller5,
                 // onSaved: (String val) {
                 //   email = val;
@@ -298,7 +298,7 @@ void initState() {
                 keyboardType: TextInputType.text,
                 textInputAction: TextInputAction.next,
                 onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
-                //validator: validateEmail,
+                validator: validateEmail,
                 controller: _controller7,
                 // onSaved: (String val) {
                 //   email = val;
@@ -312,7 +312,7 @@ void initState() {
                 textInputAction: TextInputAction.next,
                 onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
                 controller: _controller8,
-                //validator: validatePassword,
+                validator: validatePassword,
                 // onSaved: (String val) {
                 //   password = val;
                   
@@ -352,6 +352,7 @@ void initState() {
   @override
   void dispose() {
     _passwordController.dispose();
+    _image = null;
     _controller1.dispose();
     _controller2.dispose();
     _controller3.dispose();
@@ -375,7 +376,7 @@ void initState() {
     String password = _controller8.text;
 
     widget.user =
-    User(username, firstname, lastname, mail,bio,usertype,language, password);
+    new User(username, firstname, lastname, mail,bio,usertype,language, password);
     Navigator.of(context).pop(widget.user);
 
     }

@@ -1,21 +1,22 @@
-
-import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:saeed_fyp/Screens/model/mysql.dart';
 import 'package:saeed_fyp/Screens/model/user.dart';
+import 'package:saeed_fyp/Screens/services/helper.dart';
 import 'package:saeed_fyp/Screens/update/components/background.dart';
 import 'package:saeed_fyp/components/text_field_container.dart';
+import 'package:saeed_fyp/constants.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
 
-import '../../../constants.dart';
 import '../../../main.dart';
 
-late File _image;
+File _image;
 
 class Update extends StatefulWidget {
   User user;
-  Update({Key ? key,  required this.user}) : super(key: key);
+  Update({Key key, this.user}) : super(key: key);
   @override
   createState() => _UpdateState();
 }
@@ -35,7 +36,6 @@ class _UpdateState extends State<Update> {
 
   Future<List<String>> updateProfile() async {
     List<User> result = [];
-    List<String> str = [];
     db.getConnection().then((conn) {
       // String sql = 'select * from symptomchecker.querytable where answer=?',[''];
       conn.query(
@@ -53,7 +53,7 @@ class _UpdateState extends State<Update> {
         conn.close();
       });
     });
-    return str;
+    return null;
   }
 
   @override
@@ -145,7 +145,7 @@ class _UpdateState extends State<Update> {
                                     TextFieldContainer(
                                         child: TextFormField(
                                             controller: _usernameController,
-                                            //validator: validateName,
+                                            validator: validateName,
                                             textInputAction:
                                                 TextInputAction.next,
                                             onFieldSubmitted: (_) =>
@@ -159,7 +159,7 @@ class _UpdateState extends State<Update> {
                                     TextFieldContainer(
                                         child: TextFormField(
                                             controller: _firstNameController,
-                                            //validator: validateName,
+                                            validator: validateName,
                                             textInputAction:
                                                 TextInputAction.next,
                                             onFieldSubmitted: (_) =>
@@ -173,7 +173,7 @@ class _UpdateState extends State<Update> {
                                     TextFieldContainer(
                                       child: TextFormField(
                                           controller: _lastNameController,
-                                          //validator: validateName,
+                                          validator: validateName,
                                           textInputAction: TextInputAction.next,
                                           onFieldSubmitted: (_) =>
                                               FocusScope.of(context)
@@ -264,7 +264,7 @@ class _UpdateState extends State<Update> {
           isDefaultAction: false,
           onPressed: () async {
             Navigator.pop(context);
-            PickedFile? image =
+            PickedFile image =
                 await _imagePicker.getImage(source: ImageSource.gallery);
             if (image != null)
               setState(() {
@@ -277,7 +277,7 @@ class _UpdateState extends State<Update> {
           isDestructiveAction: false,
           onPressed: () async {
             Navigator.pop(context);
-            PickedFile? image =
+            PickedFile image =
                 await _imagePicker.getImage(source: ImageSource.camera);
             if (image != null)
               setState(() {
