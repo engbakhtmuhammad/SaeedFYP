@@ -1,17 +1,9 @@
-# Attention please read this file
+# The Tutor APP
 
-This is out fyp project so it needs your contributions.
-Naqeeb and Habib you must familiar with Github
+This is a Flutter application where students can book tutoring session based on the tutor's hourly rate, availability, and overall rating. Students can record their tutoring sessions and revisit their previous conversations. Tutors(Instructors) can also build their own profile and reputation through App. All payment transactions are taken care of by the application making it easy and simple to book a new tutor. You are wellcome to contribute on this app. Still we have just the UI ready
 
-## Getting Github
+## Demo
 
-To use github as central center of our code you really need to know how to use github as team member .
+https://user-images.githubusercontent.com/55682574/147442927-0a7a0e6f-9053-4b7d-a5a6-091c6f2da658.mp4
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
