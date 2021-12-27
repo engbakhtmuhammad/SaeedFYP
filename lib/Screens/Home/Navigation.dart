@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:saeed_fyp/Screens/Booking/booking.dart';
 import 'package:saeed_fyp/Screens/Home/Home.dart';
-import 'package:saeed_fyp/Screens/Profile/userProfileScreen.dart';
+import 'package:saeed_fyp/Screens/Profile/UserProfile.dart';
 import 'package:saeed_fyp/Screens/Sesseion/session.dart';
 
 import '../../constants.dart';

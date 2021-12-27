@@ -1,7 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 
-import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:flutter/material.dart';
 import 'package:saeed_fyp/Screens/Welcome/welcome_screen.dart';
 import 'package:saeed_fyp/Screens/model/user.dart';
@@ -13,15 +10,21 @@ import 'package:saeed_fyp/constants.dart';
 import 'package:saeed_fyp/main.dart';
 
 class UsersProfile extends StatefulWidget {
-  User user;
-  UsersProfile({Key key, this.user}) : super(key: key);
+  //User user;
+  UsersProfile({Key key, 
+  //this.user
+  }) : super(key: key);
   @override
-  createState() => _UsersProfileState(user);
+  createState() => _UsersProfileState(
+    //user
+    );
 }
 
 class _UsersProfileState extends State<UsersProfile> {
-  User user;
-  _UsersProfileState(this.user);
+  //User user;
+  _UsersProfileState(
+    //this.user
+    );
   bool _imageLoad = false;
   // void checkImage() {
   //   if (user.profilePictureURL == "")
@@ -43,7 +46,7 @@ class _UsersProfileState extends State<UsersProfile> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: header("Profile"),
+      backgroundColor: Color(0xfff5f7fa),
       body: SingleChildScrollView(
         child: Stack(children: [
           Column(
@@ -51,7 +54,8 @@ class _UsersProfileState extends State<UsersProfile> {
               Container(
                 height: size.height * .18,
                 decoration: BoxDecoration(
-                    color: kBackgroundColor,
+                  gradient: LinearGradient(
+                    colors: [kBackgroundColor,kPrimaryColor]),
                     borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(35),
                         bottomRight: Radius.circular(35))),
@@ -65,28 +69,28 @@ class _UsersProfileState extends State<UsersProfile> {
                     child: ListTile(
                       title: Center(
                           child: Text(
-                        user.username,
+                        'user.username',
                         style: TextStyle(fontWeight: FontWeight.w600),
                       )),
                       subtitle: Center(
                         child: Text(
-                            user.bio.toString()),
+                            'user.bio.toString()'),
                       ),
                     ),
                   ),
                   SizedBox(height: size.height * .02),
                   ProfileField(
-                    text: user.mail,
+                    text: 'user.mail',
                     icon: Icons.pin_drop_outlined,
                     color: Colors.red,
                   ),
                   ProfileField(
-                    text: user.mail.toString(),
+                    text: 'user.mail.toString()',
                     icon: Icons.phone_outlined,
                     color: Colors.green,
                   ),
                   ProfileField(
-                    text: user.language.toString(),
+                    text: 'user.language.toString()',
                     icon: Icons.language_outlined,
                     color: Colors.blue,
                   ),
@@ -98,7 +102,7 @@ class _UsersProfileState extends State<UsersProfile> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => Update(user: user,
+                              builder: (context) => Update(
                                   )));
                     },
                   ),
@@ -130,19 +134,10 @@ class _UsersProfileState extends State<UsersProfile> {
             child: CircleAvatar(
               radius: size.height * .08,
               backgroundColor: kPrimaryColor,
-              child: Text(user.username[0].toUpperCase().toString(),style: TextStyle(color: kPrimaryLightColor,fontSize: 45),),
-              // backgroundImage: _imageLoad
-              //         ? AssetImage('assets/images/place_holder.png')
-              //         : NetworkImage('user.profilePictureURL'),
+              //child: Text('S',style: TextStyle(color: kPrimaryLightColor,fontSize: 45),),
+              backgroundImage: AssetImage('assets/images/bg.jpg'),
             ),
           ),
-          Positioned(
-              top: 10,
-              right: 10,
-              child: Image(
-                image: AssetImage("assets/images/hospital-bed.png"),
-                width: size.width * .25,
-              )),
         ]),
       ),
     );

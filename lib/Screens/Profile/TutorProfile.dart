@@ -1,7 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 
-import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:flutter/material.dart';
 import 'package:saeed_fyp/Screens/Welcome/welcome_screen.dart';
 import 'package:saeed_fyp/Screens/model/user.dart';
@@ -14,20 +11,21 @@ import 'package:saeed_fyp/main.dart';
 
 class TutorProfile extends StatefulWidget {
   //User user;
-  TutorProfile({Key key, 
-  //this.user
+  TutorProfile({
+    Key key,
+    //this.user
   }) : super(key: key);
   @override
   createState() => _TutorProfileState(
-    //user
-    );
+      //user
+      );
 }
 
 class _TutorProfileState extends State<TutorProfile> {
   //User user;
   _TutorProfileState(
-    //this.user
-    );
+      //this.user
+      );
   bool _imageLoad = false;
   // void checkImage() {
   //   if (user.profilePictureURL == "")
@@ -49,108 +47,182 @@ class _TutorProfileState extends State<TutorProfile> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: header("Profile"),
-      body: SingleChildScrollView(
-        child: Stack(children: [
-          Column(
-            children: [
-              Container(
-                height: size.height * .18,
-                decoration: BoxDecoration(
-                    color: kBackgroundColor,
-                    borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(35),
-                        bottomRight: Radius.circular(35))),
+      body: Stack(children: [
+        Container(
+          height: size.height,
+          width: size.width,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(colors: [kBackgroundColor, kPrimaryColor]),
+          ),
+          child: Padding(
+            padding: EdgeInsets.only(top: size.height * .03),
+            child: ListTile(
+              title: Text(
+                "Saeed Khan Tareen",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold),
               ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.only(
-                        right: 30, left: 30, top: size.height * .065),
-                    child: ListTile(
-                      title: Center(
-                          child: Text(
-                        'user.username',
-                        style: TextStyle(fontWeight: FontWeight.w600),
-                      )),
-                      subtitle: Center(
-                        child: Text(
-                            'user.bio.toString()'),
-                      ),
-                    ),
+              subtitle: Row(
+                children: [
+                  Icon(
+                    Icons.star,
+                    color: Colors.amber,
                   ),
-                  SizedBox(height: size.height * .02),
-                  ProfileField(
-                    text: 'user.mail',
-                    icon: Icons.pin_drop_outlined,
-                    color: Colors.red,
+                  Icon(
+                    Icons.star,
+                    color: Colors.amber,
                   ),
-                  ProfileField(
-                    text: 'user.mail.toString()',
-                    icon: Icons.phone_outlined,
-                    color: Colors.green,
+                  Icon(
+                    Icons.star,
+                    color: Colors.amber,
                   ),
-                  ProfileField(
-                    text: 'user.language.toString()',
-                    icon: Icons.language_outlined,
-                    color: Colors.blue,
+                  Icon(
+                    Icons.star,
+                    color: Colors.amber,
                   ),
-                  ProfileField(
-                    text: 'Edit Information',
-                    icon: Icons.edit,
-                    color: Colors.orange,
-                    press: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => Update(
-                                  )));
-                    },
+                  Icon(
+                    Icons.star,
+                    color: Colors.amber,
                   ),
-                  ProfileField(
-                    text: 'log out from your account',
-                    icon: Icons.logout,
-                    color: Colors.red,
-                    press: () async {
-                      // user.active = false;
-                      // user.lastOnlineTimestamp = Timestamp.now();
-                      // FireStoreUtils.updateCurrentUser(user);
-                      // await auth.FirebaseAuth.instance.signOut();
-                      // MyAppState.currentUser = null;
-                      pushAndRemoveUntil(context, WelcomeScreen(), false);
-                    },
+                  SizedBox(
+                    width: 10,
                   ),
-                  // ProfileField(
-                  //   text: '',
-                  //   icon: Icons.logout,
-                  //   color: kPrimaryLightColor,
-                  // ),
+                  Text(
+                    "(5)",
+                    style: TextStyle(color: Colors.white, fontSize: 14),
+                  )
                 ],
               ),
-            ],
-          ),
-          Positioned(
-            top: size.height * .09,
-            left: size.width / 2 - size.height * 0.08,
-            child: CircleAvatar(
-              radius: size.height * .08,
-              backgroundColor: kPrimaryColor,
-              child: Text('user.username[0].toUpperCase().toString()',style: TextStyle(color: kPrimaryLightColor,fontSize: 45),),
-              // backgroundImage: _imageLoad
-              //         ? AssetImage('assets/images/place_holder.png')
-              //         : NetworkImage('user.profilePictureURL'),
+              leading: CircleAvatar(
+                radius: size.height * .04,
+                backgroundColor: kPrimaryColor,
+                child: Text(
+                  'S',
+                  style: TextStyle(color: kPrimaryLightColor, fontSize: 45),
+                ),
+                // backgroundImage: _imageLoad
+                //         ? AssetImage('assets/images/place_holder.png')
+                //         : NetworkImage('user.profilePictureURL'),
+              ),
             ),
           ),
-          Positioned(
-              top: 10,
-              right: 10,
-              child: Image(
-                image: AssetImage("assets/images/hospital-bed.png"),
-                width: size.width * .25,
-              )),
-        ]),
-      ),
+        ),
+        Positioned(
+          top: size.height * .15,
+          child: Container(
+            height: size.height * .85,
+            width: size.width,
+            decoration: BoxDecoration(
+                color: Color(0xfff5f7fa),
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(35),
+                    topRight: Radius.circular(35))),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                SizedBox(height: 20,),
+                ListTile(
+                  
+                  title: Text(
+                  "About Tutor:",
+                  style: TextStyle(
+                      color: kBMediumColor,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold),
+              ),
+              subtitle: Text(
+                  "To use github as central center of our code you really need to know how to use github as team member .",
+                  style: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500),
+              ),
+              ),
+              Divider(),
+               Padding(
+                 padding: const EdgeInsets.all(8.0),
+                 child: Text(
+                  "School:",
+                  style: TextStyle(
+                      color: kBMediumColor,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold),
+              ),
+               ),
+               Card(
+                 child: ListTile(title: Text(
+                "University of Balochistan",
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold),
+              ),),
+               ),
+               Padding(
+                 padding: const EdgeInsets.all(8.0),
+                 child: Text(
+                  "Rate per hour:",
+                  style: TextStyle(
+                      color: kBMediumColor,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold),
+              ),
+               ),
+               Card(
+                 child: ListTile(title: Text(
+                "\$2.0",
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold),
+              ),),
+               ),
+               Padding(
+                 padding: const EdgeInsets.all(8.0),
+                 child: Text(
+                  "Tutoring Location:",
+                  style: TextStyle(
+                      color: kBMediumColor,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold),
+              ),
+               ),
+               Card(
+                 child: ListTile(title: Text(
+                "Lehrhi gate, near Asian villas quetta",
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold),
+              ),),
+               ),
+               Padding(
+                 padding: const EdgeInsets.all(8.0),
+                 child: Text(
+                  "Select course for tutoring session:",
+                  style: TextStyle(
+                      color: kBMediumColor,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold),
+              ),
+               ),
+               Card(
+                 child: ListTile(title: Text(
+                "Web Engineering",
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold),
+              ),),
+               )
+              ],
+            ),
+          ),
+        ),
+      ]),
     );
   }
 }

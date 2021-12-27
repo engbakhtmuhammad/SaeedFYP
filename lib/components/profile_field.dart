@@ -17,28 +17,26 @@ class ProfileField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 5),
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-      width: size.width - 10,
-      height: 70,
-      decoration: BoxDecoration(
-        color: kPrimaryLightColor,
-        borderRadius: BorderRadius.circular(25),
-      ),
-      child: Row(
-        children: [
-          IconButton(
-            icon: Icon(
-              icon,
-              size: 35,
-              color: color,
+    return Card(
+      child: Container(
+        margin: EdgeInsets.symmetric(vertical: 5),
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+        width: size.width,
+        height: size.height*.08,
+        child: Row(
+          children: [
+            IconButton(
+              icon: Icon(
+                icon,
+                size: 35,
+                color: color,
+              ),
+              onPressed: press,
             ),
-            onPressed: press,
-          ),
-          Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20), child: Text(text))
-        ],
+            Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20), child: Text(text))
+          ],
+        ),
       ),
     );
     // return SearchFieldContainer(

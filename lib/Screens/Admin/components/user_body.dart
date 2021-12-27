@@ -1,13 +1,8 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:saeed_fyp/Screens/Admin/components/background.dart';
 import 'package:saeed_fyp/Screens/Login/loginScreen.dart';
-import 'package:saeed_fyp/Screens/model/doctor.dart';
 import 'package:saeed_fyp/Screens/model/user.dart';
-import 'package:saeed_fyp/Screens/signUp/doctorSignUp.dart';
 import 'package:saeed_fyp/components/doctorList_field.dart';
 import 'package:saeed_fyp/components/rounded_search_field.dart';
 import 'package:saeed_fyp/constants.dart';

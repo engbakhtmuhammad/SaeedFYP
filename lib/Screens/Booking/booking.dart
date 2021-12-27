@@ -40,7 +40,6 @@ class _BookingPageState extends State<BookingPage> {
           ),
           SizedBox(height: 10,),
           SwitchListTile(
-            
             title: Text('Filter by your School',style: TextStyle(color: kBMediumColor,fontWeight: FontWeight.bold,fontSize: 18),),
             activeColor: kPrimaryColor, onChanged: (bool value) {  }, value: true,),
           ListView.builder(

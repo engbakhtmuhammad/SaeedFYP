@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:saeed_fyp/Screens/Profile/components/background.dart';
@@ -20,19 +20,18 @@ class _SecondUserProfileState extends State<SecondUserProfile>
   String userMap;
   bool isLoading = false;
   final TextEditingController _search = TextEditingController();
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   var userInfo;
-  getUserInfo() async {
-userInfo = await _firestore.collection('users').doc(userMap).get().then((value) => {
+//   getUserInfo() async {
+// userInfo = await _firestore.collection('users').doc(userMap).get().then((value) => {
  
-});
-  }
+// });
+//   }
 
   @override
   initState()  {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
-    getUserInfo();
+    //getUserInfo();
   }
 
   @override

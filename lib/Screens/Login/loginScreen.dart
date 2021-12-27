@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:saeed_fyp/Screens/Admin/components/amin_screen.dart';
 import 'package:saeed_fyp/Screens/Home/Home.dart';
 import 'package:saeed_fyp/Screens/Home/Navigation.dart';
@@ -11,7 +12,6 @@ import 'package:saeed_fyp/components/rounded_button.dart';
 import 'package:saeed_fyp/components/text_field_container.dart';
 import 'package:saeed_fyp/constants.dart';
 import 'package:saeed_fyp/main.dart';
-import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
   @override

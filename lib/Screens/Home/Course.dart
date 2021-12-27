@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-class Rooms extends StatelessWidget {
-  const Rooms({Key key}) : super(key: key);
+class Course extends StatelessWidget {
+  final String course;
+  const Course({Key key, this.course}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +37,7 @@ class Rooms extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.symmetric(vertical: 15),
               child: Text(
-                "Bedrooms",
+                "Course",
                 style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
@@ -62,8 +63,8 @@ class Rooms extends StatelessWidget {
                 ),
                 child: Padding(
                   padding: EdgeInsets.only(left: 15, top: size.height * .26),
-                  child: const Text(
-                    'Camera bedroom',
+                  child:  Text(
+                    course,
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 17,
@@ -103,12 +104,12 @@ class DevicesGridDashboard extends StatelessWidget {
                   Icons.lightbulb_outline,
                   color: Colors.orange,
                 ),
-                'Main Light',
+                'Basic Concept',
                 '50%'),
             CardField(size, Icon(Icons.lightbulb_outline, color: Colors.grey),
-                'Table Lamp', 'Off'),
+                'DS concept', 'Off'),
             CardField(size, Icon(Icons.lightbulb_outline, color: Colors.grey),
-                'Floor Lamp', 'Off'),
+                'Exercise', 'Off'),
           ],
         ),
         Row(
@@ -120,12 +121,12 @@ class DevicesGridDashboard extends StatelessWidget {
                   Icons.music_note_outlined,
                   color: Colors.amber,
                 ),
-                'Speaker',
+                'OOP Concept',
                 '50%'),
             CardField(
                 size, Icon(Icons.radio, color: Colors.grey), 'Socket', 'Off'),
             CardField(size, Icon(Icons.wifi_outlined, color: Colors.green),
-                'Sensor', 'Off'),
+                'Project', 'Off'),
           ],
         ),
         CardField(
@@ -134,7 +135,7 @@ class DevicesGridDashboard extends StatelessWidget {
               Icons.air,
               color: Colors.teal,
             ),
-            'Air Condition',
+            'Scrapping',
             '50%'),
       ],
     );

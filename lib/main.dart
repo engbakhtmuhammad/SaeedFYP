@@ -4,7 +4,6 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:saeed_fyp/Screens/signUp/signUpScreen.dart';
 import 'package:saeed_fyp/constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'Screens/Welcome/welcome_screen.dart';
@@ -96,21 +95,6 @@ class OnBoardingState extends State<OnBoarding> {
 
     if (finishedOnBoarding) {
       pushReplacement(context, WelcomeScreen());
-      // auth.User firebaseUser = auth.FirebaseAuth.instance.currentUser;
-      // //auth.User firebaseDoctor = auth.FirebaseAuth.instance.currentUser;
-      // if (firebaseUser != null) {
-      //   User user = await FireStoreUtils().getCurrentUser(firebaseUser.uid);
-      //   if (user != null) {
-      //     MyAppState.currentUser = user;
-      //     pushReplacement(context,  Body());
-      //   } else {
-      //     pushReplacement(context, WelcomeScreen());
-      //   }
-      // }
-      
-      //  else {
-      //   pushReplacement(context, WelcomeScreen());
-      // }
     } else {
       pushReplacement(context, OnBoardingScreen());
     }

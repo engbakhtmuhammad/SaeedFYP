@@ -6,7 +6,6 @@ import 'package:saeed_fyp/Screens/services/helper.dart';
 import 'package:saeed_fyp/Screens/signUp/background.dart';
 import 'package:saeed_fyp/components/rounded_button.dart';
 import 'package:saeed_fyp/components/text_field_container.dart';
-import 'package:image_picker/image_picker.dart';
 
 import '../../constants.dart';
 
@@ -21,7 +20,6 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  final ImagePicker _imagePicker = ImagePicker();
   TextEditingController _passwordController = new TextEditingController();
   GlobalKey<FormState> _key = new GlobalKey();
   AutovalidateMode _validate = AutovalidateMode.disabled;
